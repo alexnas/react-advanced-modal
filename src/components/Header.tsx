@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import logo from '@/assets/react.svg';
 import NavLinkButton from '@/components/NavLinkButton';
+import Button from '@/components/Button';
 import Modal from '@/components/modal/Modal';
-import Button from './Button';
+import ModalCardWrapper from '@/components/modal/ModalCardWrapper';
+import ModalCardContent from '@/components/modal/ModalCardContent';
 
 const Header: React.FC = () => {
   const [isShowingModal, setIsShowing] = useState(false);
@@ -23,7 +25,12 @@ const Header: React.FC = () => {
       </div>
 
       <Button title="Top-Modal" handleClick={toggleModal} />
-      <Modal show={isShowingModal} onCloseHandleClick={toggleModal} />
+
+      <Modal show={isShowingModal} onCloseHandleClick={toggleModal}>
+        <ModalCardWrapper onCloseHandleClick={toggleModal}>
+          <ModalCardContent />
+        </ModalCardWrapper>
+      </Modal>
     </div>
   );
 };
