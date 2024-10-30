@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Header from '@/components/Header';
 import Modal from '@/components/modal/Modal';
+import Button from '@/components/Button';
 
 const HomeView: React.FC = () => {
   const [isShowingModal, setIsShowing] = useState(false);
@@ -19,15 +20,10 @@ const HomeView: React.FC = () => {
           </h1>
 
           <div className="mt-64 flex justify-center">
-            <button
-              className="rounded-xl p-5 w-fit h-auto bg-teal-500 text-gray-50 font-bold uppercase shadow-md hover:shadow-sm shadow-teal-600 hover:bg-teal-400"
-              onClick={toggleModal}
-            >
-              Open Home Modal
-            </button>
+            <Button title="Open Home Modal" handleClick={toggleModal} />
+            <Modal show={isShowingModal} onCloseHandleClick={toggleModal} />
           </div>
         </section>
-        <Modal show={isShowingModal} onCloseHandleClick={toggleModal} />
       </div>
     </>
   );

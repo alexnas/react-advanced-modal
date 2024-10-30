@@ -2,6 +2,7 @@ import { useState } from 'react';
 import logo from '@/assets/react.svg';
 import NavLinkButton from '@/components/NavLinkButton';
 import Modal from '@/components/modal/Modal';
+import Button from './Button';
 
 const Header: React.FC = () => {
   const [isShowingModal, setIsShowing] = useState(false);
@@ -21,13 +22,7 @@ const Header: React.FC = () => {
         <NavLinkButton to="/about" title="About" />
       </div>
 
-      <button
-        onClick={toggleModal}
-        className="border-2 w-fit h-auto text-nowrap border-gray-500 rounded-md p-2 bg-teal-400 hover:bg-teal-300"
-      >
-        Top-Modal
-      </button>
-
+      <Button title="Top-Modal" handleClick={toggleModal} />
       <Modal show={isShowingModal} onCloseHandleClick={toggleModal} />
     </div>
   );
