@@ -1,20 +1,11 @@
-import { useState } from 'react';
 import Header from '@/components/Header';
 import Button from '@/components/Button';
 import ModalCard from '@/components/card/ModalCard';
 import ModalCardContent from '@/components/card/ModalCardContent';
+import useModal from '@/components/modal/useModal';
 
 const HomeView: React.FC = () => {
-  const [isShowingModal, setIsShowing] = useState(false);
-
-  const toggleModal = () => {
-    console.log('toggleModal before', isShowingModal);
-    setIsShowing(!isShowingModal);
-    console.log('toggleModal after', isShowingModal);
-  };
-
-  const cardContent =
-    ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, ea expedita praesentium vero quibusdam ratione aperiam atque non maiores, veniam sint. Aut reprehenderit ipsam incidunt ratione quas qui. Nisi, expedita.';
+  const [isShowingModal, toggleModal] = useModal(false);
 
   return (
     <>
@@ -33,7 +24,9 @@ const HomeView: React.FC = () => {
 
         <ModalCard show={isShowingModal} toggleModal={toggleModal}>
           <ModalCardContent
-            cardContent={cardContent}
+            cardContent={
+              'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
+            }
             submitModal={toggleModal}
           />
         </ModalCard>
