@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import Header from '@/components/Header';
 import Button from '@/components/Button';
-import Modal from '@/components/modal/Modal';
-import ModalCardWrapper from '@/components/modal/ModalCardWrapper';
-import ModalCardContent from '@/components/modal/ModalCardContent';
+import ModalCard from '@/components/card/ModalCard';
+import ModalCardContent from '@/components/card/ModalCardContent';
 
 const AboutView: React.FC = () => {
   const [isShowingModal, setIsShowing] = useState(false);
@@ -11,6 +10,9 @@ const AboutView: React.FC = () => {
   const toggleModal = () => {
     setIsShowing(!isShowingModal);
   };
+
+  const cardContent =
+    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum fuga ipsum possimus beatae amet ab minima sed asperiores veritatis debitis vitae hic veniam, corrupti unde porro dolores iure at numquam?';
   return (
     <>
       <div className="h-full min-h-screen bg-gray-200">
@@ -26,11 +28,12 @@ const AboutView: React.FC = () => {
           </div>
         </section>
 
-        <Modal show={isShowingModal} onCloseHandleClick={toggleModal}>
-          <ModalCardWrapper onCloseHandleClick={toggleModal}>
-            <ModalCardContent />
-          </ModalCardWrapper>
-        </Modal>
+        <ModalCard show={isShowingModal} toggleModal={toggleModal}>
+          <ModalCardContent
+            cardContent={cardContent}
+            submitModal={toggleModal}
+          />
+        </ModalCard>
       </div>
     </>
   );
